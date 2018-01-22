@@ -1,0 +1,74 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix oldca: <http://localhost/oldca/OLDCA.owl#>.
+
+
+
+<#QuestionnaireTriplesMap>
+	a rr:TriplesMap ;
+	rr:logicalTable [ rr:tableName "Fragebogen" ] ;	
+	rr:subjectMap [
+		rr:template "http://localhost/oldca/fragebogen/Fragebogen{ID}" ;
+		rr:class oldca:Questionnaire ;] ;
+	rr:predicateObjectMap [
+		rr:predicate oldca:title ;
+		rr:objectMap [ rr:column "TITLE" ;rr:language "de";] ;] ;
+	rr:predicateObjectMap [
+		rr:predicate oldca:publicationYear ;
+		rr:objectMap [ rr:column "YEAR_OF_PUBLICATION" ] ;] ;
+	rr:predicateObjectMap [
+		rr:predicate oldca:note ;
+		rr:objectMap [ rr:column "NOTE" ] ;] ;
+	rr:predicateObjectMap [
+		rr:predicate oldca:hasAuthor ;
+		rr:objectMap [
+			rr:parentTriplesMap <#PersonTriplesMap> ;
+			rr:joinCondition [ 
+				rr:child "PERSON_ID" ; 
+				rr:parent "ID" ;	]]] ;
+	.
+	
+
+<#QuestionTripleMap>
+		a rr:TriplesMap;
+		rr:logicalTable [ rr:tableName "Frage" ] ;
+		rr:subjectMap [
+			rr:template "http://localhost/oldca/frage/Frag{QUESTIONNAIRE_ID}{NUMBER}" ;
+			rr:class oldca:Question ;];
+		rr:predicateObjectMap [
+			rr:predicate oldca:number ;
+			rr:objectMap [ rr:column "NUMBER" ] ;];
+		rr:predicateObjectMap [
+			rr:predicate oldca:originalQuestion ;
+			rr:objectMap [ rr:column "ORIGINAL_QUESTION" ;rr:language "de";] ;];
+		rr:predicateObjectMap [
+			rr:predicate oldca:shortQuestion ;
+			rr:objectMap [ rr:column "SHORT_QUESTION" ;rr:language "de";] ;];
+		rr:predicateObjectMap [
+			rr:predicate oldca:isquestionOf ;
+			rr:objectMap [
+				rr:parentTriplesMap <#QuestionnaireTriplesMap> ;
+				rr:joinCondition [ 
+					rr:child "QUESTIONNAIRE_ID" ; 
+					rr:parent "ID" ;	]]] ;
+		.
+		
+<#PersonTriplesMap>
+		a rr:TriplesMap;
+		rr:logicalTable [ rr:tableName "person" ] ;
+		rr:subjectMap [
+			rr:template "http://localhost/oldca/person/person{ID}" ;
+			rr:class oldca:author ;
+		];
+		rr:predicateObjectMap [
+			rr:predicate oldca:FirstName ;
+			rr:objectMap [ rr:column "FIRSTNAME" ] ;
+		];
+		rr:predicateObjectMap [
+			rr:predicate oldca:LastName ;
+			rr:objectMap [ rr:column "LASTNAME"] ;
+		];
+
+		
+		.
