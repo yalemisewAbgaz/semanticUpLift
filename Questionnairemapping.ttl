@@ -1,7 +1,7 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dbpedia: <http://dbpedia.org/ontology/> .
-@prefix oldca: <http://localhost/oldca/OLDCA.owl#>.
+@prefix oldca: <http://localhost/oldcan/OLDCAN.owl#>.
 
 
 
