@@ -1,4 +1,4 @@
-This repository contains an ongoing work on:
+This repository contains an ongoing work. The URIs are only for experimental purpose and permanent Uris will be provided soon.This work contains:
 1. the ontology for lexical data collection and analysis stage
 2. semantic data (RDf) of questionnaires and questions of the dboe@ema database. 
 The semantic up-lift is done using R2RML and the mapping rule in ttl format is included. 

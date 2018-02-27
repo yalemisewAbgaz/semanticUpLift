@@ -3,8 +3,6 @@
 @prefix dbpedia: <http://dbpedia.org/ontology/> .
 @prefix oldca: <http://localhost/oldcan/OLDCAN.owl#>.
 
-
-
 <#QuestionnaireTriplesMap>
 	a rr:TriplesMap ;
 	rr:logicalTable [ rr:tableName "Fragebogen" ] ;	
@@ -28,8 +26,7 @@
 				rr:child "PERSON_ID" ; 
 				rr:parent "ID" ;	]]] ;
 	.
-	
-
+	›››
 <#QuestionTripleMap>
 		a rr:TriplesMap;
 		rr:logicalTable [ rr:tableName "Frage" ] ;
